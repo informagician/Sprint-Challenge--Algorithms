@@ -21,4 +21,8 @@ O.space(n)
 
 ## Exercise II
 
+for any egg being thrown, if the floor number is greater than or equal to "f", the egg will break, otherwise the egg won't break. since we don't know the number of floors, this becomes a number guessing game.
 
+given n (number of floors in the building), we can start guessing with n/2. if the thrown egg from n/2 floor broke then we need to guess a lower floor, otherwise we need to guess a higher floor.
+
+we will follow above strategy until we get to the answer. this is a binary search problem with complexity of Log(n).
