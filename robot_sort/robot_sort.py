@@ -97,7 +97,50 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        self.swap_item() # pick first item and put None down
+        # self.swap_item()
+        self.right_dir()
+        self.swap_item()
+
+    
+    def right_dir(self):
+        
+        while self.can_move_right():
+            self.move_right()
+            if self.compare_item() == 1:
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+            elif self.compare_item() == -1:
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+        if self.can_move_right() == False:
+            # self.swap_item()
+            self.left_dir()
+
+    def left_dir(self):
+        
+        while self.can_move_left():
+            self.move_left()
+            if self.compare_item() == -1:
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+            elif self.compare_item() == 1:
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+        if self.can_move_left() == False:
+            # self.swap_item()
+            self.right_dir()
+
 
 
 if __name__ == "__main__":
