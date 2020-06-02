@@ -97,17 +97,18 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        self.swap_item() # pick first item and put None down
-        # self.swap_item()
+        self.set_light_on()
+        self.swap_item()
         self.right_dir()
         self.swap_item()
-
-    
-    def right_dir(self):
         
+    def right_dir(self):
+
+        self.set_light_off()
         while self.can_move_right():
             self.move_right()
             if self.compare_item() == 1:
+                self.set_light_on()
                 self.swap_item()
                 self.move_left()
                 self.swap_item()
@@ -118,27 +119,26 @@ class SortingRobot:
                 self.swap_item()
                 self.move_right()
                 self.swap_item()
-        if self.can_move_right() == False:
-            # self.swap_item()
+        if self.can_move_right() == False and self.light_is_on():
             self.left_dir()
 
     def left_dir(self):
-        
+        self.set_light_off()
         while self.can_move_left():
             self.move_left()
             if self.compare_item() == -1:
-                self.swap_item()
-                self.move_left()
+                self.set_light_on()
                 self.swap_item()
                 self.move_right()
+                self.swap_item()
+                self.move_left()
                 self.swap_item()
             elif self.compare_item() == 1:
                 self.move_right()
                 self.swap_item()
                 self.move_left()
                 self.swap_item()
-        if self.can_move_left() == False:
-            # self.swap_item()
+        if self.can_move_left() == False and self.light_is_on():
             self.right_dir()
 
 
